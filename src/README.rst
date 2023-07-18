@@ -10,6 +10,9 @@ consist of an interconnected network of nodes struts and plates. These individua
 are combined into a unitary cell which periodic repetition creates the lattice. Furthermore
 this lattice can be inserted into any shell-like CAD geometry. This library is based on the CADQuery library.
 
+.. image:: https://github.com/sxhulzenstein/LatticeGeometryLib/raw/main/src/images/latticegeometrylib.png
+    :height: 500
+
 Requirements
 ============
 

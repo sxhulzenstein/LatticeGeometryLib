@@ -7,7 +7,7 @@ setup(
     # the name must match the folder name 'latticegeometrylib'
     name="latticegeometrylib",
     author="Dennis Schulz",
-    version='0.0.11',
+    version='0.0.14',
     description=DESCRIPTION,
     long_description=open('README.rst').read(),
     packages=find_packages(),
