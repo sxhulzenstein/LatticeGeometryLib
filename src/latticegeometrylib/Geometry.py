@@ -107,6 +107,7 @@ class Geometry:
             raise ValueError( "Es ist kein Gitter als Kern vorhanden." )
 
         self.union_geometry = self.shell_geometry.union( self.lattice_geometry, clean = False )
+        self.has_union_geometry = True
 
     def reset( self ) -> None:
         """

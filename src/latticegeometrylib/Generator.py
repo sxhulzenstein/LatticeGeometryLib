@@ -16,7 +16,7 @@ Entity = CellConfiguration.Entity
 CellConfiguration = CellConfiguration.CellConfiguration
 
 
-class LatticeGeometryLib:
+class LatticeGenerator:
     def __init__( self ):
         self.config = CellConfiguration()
         self.geometry = Geometry()

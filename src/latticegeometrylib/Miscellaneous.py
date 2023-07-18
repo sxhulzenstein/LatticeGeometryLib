@@ -1,6 +1,4 @@
 
-from stl.mesh import Mesh
-from cqmore import Workplane
 import cadquery as cq
 from typing import (Tuple, List, Any, AnyStr, Union)
 

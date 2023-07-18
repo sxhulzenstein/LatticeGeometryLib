@@ -1,4 +1,4 @@
-from . import LatticeGeometryLib
+from . import Generator
 from . import UnitaryCell
 from . import Miscellaneous
 from . import Lattice
