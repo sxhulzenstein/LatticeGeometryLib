@@ -2,7 +2,6 @@ from cadquery import Workplane
 import math
 from . import Lattice
 Lattice = Lattice.Lattice
-from multimethod import multimethod as overload
 from . import Miscellaneous
 BoundingBox = Miscellaneous.BoundingBox
 
@@ -38,14 +37,21 @@ class Geometry:
         bb = BoundingBox( self.solid_geometry )
         return bb
 
-    @overload
-    def shell( self, inner_thickness: float = 0., outer_thickness: float = 0. ) -> None:
+    def shell( self, inner_thickness: float = 0.,
+               outer_thickness: float = 0.,
+               shell_geometry: Workplane | None = None ) -> None:
         """
         Erstellt die Schalengeometrie für eine gegebene Eingangsgeometrie
 
         :param inner_thickness: Aufdickung der Oberfläche ins innere der Geometrie
         :param outer_thickness: Nach außen gerichtete Aufdickung der Oberfläche der Geometrie
+        :param shell_geometry: importierte Schalengeometrie, falls extern erzeugt
         """
+
+        if not shell_geometry is None:
+            self.shell_geometry = shell_geometry
+            self.has_shell_geometry = True
+            return
 
         try:
             if inner_thickness  == 0. and not outer_thickness == 0.:
@@ -72,16 +78,6 @@ class Geometry:
         except UserWarning as user_warning:
             raise( user_warning )
 
-        self.has_shell_geometry = True
-
-    @overload
-    def shell( self, shell: Workplane ) -> None:
-        """
-        Fügt die Schalengeometrie hinzu
-
-        :param shell: extern erzeugte Schalengeometrie
-        """
-        self.shell_geometry = shell
         self.has_shell_geometry = True
 
     def fill( self, lattice: Lattice ) -> None:

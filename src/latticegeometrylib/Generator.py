@@ -55,7 +55,7 @@ class LatticeGenerator:
         exporters.export( self.get_shell(), filepath )
 
     def set_shell( self, shell: Workplane ) -> None:
-        self.geometry.shell( shell )
+        self.geometry.shell( shell_geometry = shell )
 
     def get_shell( self ) -> Workplane:
         if not self.geometry.has_shell_geometry:
