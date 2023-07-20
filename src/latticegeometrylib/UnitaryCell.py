@@ -56,7 +56,7 @@ class UnitaryCell:
                     self.vertices[ 1 ], self.vertices[ 7 ] )
                 self.geometry = self.geometry.edges( selection ).fillet( entity.get( "radius" ) )
 
-            if dimension == 1:
+            if dimension == 0:
                 radius: float = entity.get( "diameter" ) / 2.
                 self.geometry = self.geometry.union(
                     Workplane().sphere( radius ).val().located( loc = Location( entity.geometry[ 0 ] ) ) )
