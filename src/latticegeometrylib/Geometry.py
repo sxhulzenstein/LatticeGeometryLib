@@ -89,7 +89,8 @@ class Geometry:
         if not self.has_solid_geometry:
             raise ValueError( "Es ist keine Eingangsgeometrie vorhanden." )
 
-        self.lattice_geometry = self.solid_geometry.intersect( lattice.geometry, clean = False )
+        self.lattice_geometry = self.solid_geometry.intersect(
+            lattice.geometry, clean = False )
         self.has_lattice_geometry = True
 
     def merge( self ) -> None:

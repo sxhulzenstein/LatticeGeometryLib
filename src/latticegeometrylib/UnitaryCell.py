@@ -10,7 +10,7 @@ class UnitaryCell:
     """
     Geometrische Repräsentation der Elementarzelle
     """
-    def __init__( self, size: Size = Size() ):
+    def __init__( self, size: Size | None = None ):
         """
         Initialisierung der Elementarzelle über Angabe der räumlichen Dimensionen
 
@@ -27,12 +27,13 @@ class UnitaryCell:
                 7: Vector( ( measures.dx / 2., measures.dy / 2., measures.dz / 2.) ),
                 8: Vector( ( - measures.dx / 2., measures.dy / 2., measures.dz / 2.) )
             }
-        self.size = size
-        self.vertices = _vertices( size )
-        self.initialized = False
+        self.size: Size | None = size
+        self.vertices: dict[ int, Vector ] | None = None
+        self.initialized: bool = False
         self.geometry: Workplane = Workplane()
 
-        if not size == Size():
+        if size is not None:
+            self.vertices = _vertices( size )
             self.initialized = True
 
         self.has_cell = False
@@ -59,7 +60,8 @@ class UnitaryCell:
             if dimension == 0:
                 radius: float = entity.get( "diameter" ) / 2.
                 self.geometry = self.geometry.union(
-                    Workplane().sphere( radius ).val().located( loc = Location( entity.geometry[ 0 ] ) ) )
+                    Workplane().sphere( radius ).val().located(
+                        loc = Location( entity.geometry[ 0 ] ) ) )
 
             if dimension == 1:
                 radius: float = entity.get( "diameter" ) / 2.
